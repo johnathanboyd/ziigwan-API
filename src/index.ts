@@ -29,4 +29,4 @@ const MONGO_URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PAS
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
-mongoose.connection.on('error', (error: Error) => console.log(error))
+mongoose.connection.on('error', (error: Error) => console.log(error));

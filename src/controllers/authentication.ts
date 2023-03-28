@@ -1,9 +1,9 @@
 import express from 'express';
 
-import { createUser, getUserByEmail } from 'db/user';
-import { random, authentication } from 'helpers';
+import { createUser, getUserByEmail } from '../db/users'
+import { random, authentication } from '../helpers/index';
 
-export const register =async (req: express.Request, res: express.Response) => {
+export const register = async (req: express.Request, res: express.Response) => {
     try{
         const { email, password, username } = req.body;
 

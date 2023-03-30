@@ -9,6 +9,15 @@ import router from './router';
 const app = express();
 const dotenv = require('dotenv')
 
+//These are test comments 
+//I'm usingthem as bs changes
+
+/**
+ *    _O_|_X_|_O_
+ *    _X_|_O_|_X_
+ *    _X_|_O_|_O_
+ */   
+
 dotenv.config()
 
 app.use(cors({

@@ -8,6 +8,10 @@ export const register = async (req: express.Request, res: express.Response) => {
         const { email, password, username } = req.body;
 
         if (!email || !password || !username) {
+            console.log('request body', req.body)
+            console.log('any of these?', email);
+            console.log('any of these?', password);
+            console.log('any of these?', username);
             return res.sendStatus(400);
         }
 
@@ -22,10 +26,10 @@ export const register = async (req: express.Request, res: express.Response) => {
             email,
             username,
             authentication: {
-                salt, 
+                salt,
                 password: authentication(salt, password),
-            },
-        });
+              },
+          });
 
         return res.status(200).json(user).end();
 

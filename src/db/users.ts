@@ -11,6 +11,7 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
+
 export const UserModel = mongoose.model('User', UserSchema);
 
 // User Actions

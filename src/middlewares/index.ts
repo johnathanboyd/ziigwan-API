@@ -3,8 +3,9 @@ import {get, merge } from 'lodash';
 
 import { getUserBySessionToken } from '../db/users';
 
-export const isAuthenticatied = async (req:express.Request, res: express.Response, next: express.NextFunction) => {
+export const isAuthenticated = async (req:express.Request, res: express.Response, next: express.NextFunction) => {
     try {
+
         const sessionToken = req.cookies['ZIIGWAN-AUTH'];
 
         if(!sessionToken){
@@ -12,6 +13,8 @@ export const isAuthenticatied = async (req:express.Request, res: express.Respons
         }
 
         const existingUser = await getUserBySessionToken(sessionToken);
+
+
         if (!existingUser){
             return res.sendStatus(403);
         }

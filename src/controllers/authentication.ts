@@ -19,7 +19,7 @@ export const login = async (req:express.Request, res: express.Response) => {
 
         const expectedHash = authentication(user.authentication.salt, password);
 
-        if(user.authentication.password !== expectedHash){
+        if(user.authentication.password != expectedHash){
             return res.sendStatus(403);
         }
 
@@ -28,8 +28,9 @@ export const login = async (req:express.Request, res: express.Response) => {
 
         await user.save();
 
-        res.cookie('ZIIGWAN-AUTH', user.authentication.sessionToken, {domain: 'localhost', path: '/'});
+        res.cookie('ZIIGWAN-AUTH', user.authentication.sessionToken, { domain: 'localhost', path: '/' });
         return res.status(200).json(user).end();
+
     } catch (error) {
         console.log(error)
         return res.sendStatus(400)
@@ -41,10 +42,6 @@ export const register = async (req: express.Request, res: express.Response) => {
         const { email, password, username } = req.body;
 
         if (!email || !password || !username) {
-            console.log('request body', req.body)
-            console.log('any of these?', email);
-            console.log('any of these?', password);
-            console.log('any of these?', username);
             return res.sendStatus(400);
         }
 
